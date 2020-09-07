@@ -1,0 +1,11 @@
+---
+- name: Add EPEL repository to get OpenVPN
+  dnf:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    state: present
+  become: yes
+- name: Install OpenVPN from dnf
+  dnf:
+    name: openvpn
+    state: present
+  become: yes

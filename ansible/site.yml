@@ -1,0 +1,53 @@
+---
+- name: Set up true jumphost
+  hosts: all
+  vars: 
+    terraform_version: 0.12.24
+    terragrunt_version: 0.22.5
+    docker_version: 19.03.13
+    consul_version: 1.8.3
+    nomad_version: 0.12.4
+    vault_version: 1.5.4
+    packer_version: 1.6.2
+    awscli_version: 1.18.137
+    awless_version: 0.1.11
+    cfssl_version: 1.4.1
+    allow_convenience: true
+  tasks:
+  - name: Install common set of prequisites
+    include_role:
+      name: "{{ playbook_dir }}/roles/common"
+  - name: Install Docker
+    include_role:
+      name: "{{ playbook_dir }}/roles/docker"
+  - name: Install Terraform and Terragrunt
+    include_role:
+      name: "{{ playbook_dir }}/roles/terraform"
+  - name: Install Consul
+    include_role:
+      name: "{{ playbook_dir }}/roles/consul"
+  - name: Install Nomad
+    include_role:
+      name: "{{ playbook_dir }}/roles/nomad"
+  - name: Install Vault
+    include_role:
+      name: "{{ playbook_dir }}/roles/vault"
+  - name: Install Packer
+    include_role:
+      name: "{{ playbook_dir }}/roles/packer"
+  - name: Install awscli
+    include_role:
+      name: "{{ playbook_dir }}/roles/awscli"
+  - name: Install awless
+    include_role:
+      name: "{{ playbook_dir }}/roles/awless"
+  - name: Install cfssl
+    include_role:
+      name: "{{ playbook_dir }}/roles/cfssl"
+  - name: Install openvpn
+    include_role:
+      name: "{{ playbook_dir }}/roles/openvpn"
+  - name: Allow convenience features
+    include_role:
+      name: "{{ playbook_dir }}/roles/convenience"
+    when: allow_convenience | bool

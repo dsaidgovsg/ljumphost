@@ -1,0 +1,19 @@
+---
+- name: Install awscli via pip
+  pip:
+    name: awscli=={{ awscli_version }}
+    umask: "0022"
+  become: yes
+- name: Create default awscli configuration file
+  block:
+  - name: Create directory to config directory if not exists
+    file:
+      path: "{{ ansible_env.HOME }}/.aws"
+      mode: "0755"
+      state: directory
+  - name: Inject awscli config content
+    copy:
+      content: |-
+        [default]
+        region = ap-southeast-1
+      dest: "{{ ansible_env.HOME }}/.aws/config"

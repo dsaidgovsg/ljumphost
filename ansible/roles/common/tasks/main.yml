@@ -1,0 +1,23 @@
+---
+- name: Install required dependencies
+  block:
+    - name: From dnf
+      dnf:
+        name:
+          - jq
+          - unzip
+        state: latest
+      become: yes
+    - name: From pip
+      pip:
+        name:
+          - netaddr
+          - setuptools
+        umask: "0022"
+      become: yes
+- name: Install nice-to-have dependencies from dnf
+  dnf:
+    name:
+      - vim
+    state: latest
+  become: yes
