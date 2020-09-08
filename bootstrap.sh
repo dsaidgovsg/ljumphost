@@ -34,19 +34,17 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 EOT
 
+# Need to temporarily disable u flag
+set +u
+
 # And also allow this session to have the effect
 # (source doesn't work in subshell)
 export PATH="${HOME}/.pyenv/bin:${PATH}"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# Need to temporarily disable u flag
-# set +u
-
-# Set up PATH for this yy
 pyenv --version
-
-# set -u
+set -u
 
 # Set the global version
 echo "Checking and installing prerequisites for python build..."
