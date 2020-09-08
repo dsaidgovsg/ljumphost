@@ -24,6 +24,11 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 EOT
 
+# For some reason, the following directories must be manually created by root
+# first because the actual user won't have rights to create them
+mkdir -p "${PYENV_ROOT}/shims"
+mkdir -p "${PYENV_ROOT}/versions"
+
 # Need to temporarily disable u flag
 set +u
 
