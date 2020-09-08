@@ -1,0 +1,10 @@
+---
+- name: Set up true jumphost
+  hosts: all
+  vars: 
+    terraform_version: 0.12.24
+    terragrunt_version: 0.22.5
+  tasks:
+  - name: Install terraform and terragrunt
+    include_role:
+      name: "{{ playbook_dir }}/roles/terraform"
