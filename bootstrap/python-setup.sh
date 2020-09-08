@@ -26,6 +26,7 @@ sudo apt-get install -y --no-install-recommends curl ca-certificates git
 curl https://pyenv.run | bash
 
 cat <<"EOT" >> "${HOME}/.bashrc"
+
 export PATH="${HOME}/.pyenv/bin:${PATH}"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
@@ -63,4 +64,3 @@ pyenv global "${PYTHON_VERSION}"
 
 # Test the install python works
 python --version
-
