@@ -5,9 +5,8 @@
     dest: /usr/local/bin
     remote_src: yes
   become: yes
-- name: Install terragrunt from Internet
-  unarchive:
-    src: https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64
-    dest: /usr/local/bin
-    remote_src: yes
-  become: yes
+  - name: Install terragrunt from Internet
+    get_url:
+      url: https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64
+      dest: /usr/local/bin/terragrunt
+    become: yes
