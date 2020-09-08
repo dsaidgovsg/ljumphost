@@ -55,12 +55,12 @@ sudo apt-get install -y --no-install-recommends \
     xz-utils liblzma-dev zlib1g-dev libbz2-dev
 
 # Get rid of the installed python2 symbolic link due to python-openssl to prevent confusion
-rm -f /usr/bin/python2
+echo "Get rid of python2 from PATH before install python via pyenv..."
+sudo rm -f /usr/bin/python2
+
 pyenv install "${PYTHON_VERSION}"
 pyenv global "${PYTHON_VERSION}"
 
 # Test the install python works
 python --version
 
-# Replace current shell
-exec "${SHELL}"
