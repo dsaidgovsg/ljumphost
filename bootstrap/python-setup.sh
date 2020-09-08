@@ -42,6 +42,10 @@ set +u
 
 # shellcheck source=/dev/null
 source "${HOME}/.bashrc"
+
+# Test PATH was set correctly
+pyenv --version
+
 set -u
 
 # Set the global version
@@ -56,8 +60,8 @@ sudo apt-get install -y --no-install-recommends \
     xz-utils liblzma-dev zlib1g-dev libbz2-dev
 
 # Get rid of the installed python2 symbolic link due to python-openssl to prevent confusion
-echo "Get rid of python2 from PATH before install python via pyenv..."
-sudo rm -f /usr/bin/python2
+# echo "Get rid of python2 from PATH before install python via pyenv..."
+# sudo rm -f /usr/bin/python2
 
 pyenv install "${PYTHON_VERSION}"
 pyenv global "${PYTHON_VERSION}"
