@@ -1,33 +1,40 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# This script installs purely to user, but does require certain prequisites that
+# need root access
+
 if command -v pyenv > /dev/null; then
     echo "pyenv already installed, nothing to do..."
     exit 0
+fi
+
+if ! command -v sudo > /dev/null; then
+    echo "Need sudo to check and install prerequisites."
+    exit 1
 fi
 
 # Global variables, can override if preferred
 PYTHON_VERSION=${PYTHON_VERSION:-3.8.5}
 
 # Set up prerequisites
-apt-get update
-apt-get install -y --no-install-recommends curl ca-certificates git
+echo "Checking and installing prerequisites for pyenv..."
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends curl ca-certificates git
 
-export PYENV_ROOT=/opt/pyenv
+# Installs to PYENV_ROOT="${HOME}/.pyenv" by default
 curl https://pyenv.run | bash
 
-echo "export PYENV_ROOT=${PYENV_ROOT}" >> "${HOME}/.bashrc"
-
 cat <<"EOT" >> "${HOME}/.bashrc"
-export PATH="${PYENV_ROOT}/bin:${PATH}"
+export PATH="${HOME}/.pyenv/bin:${PATH}"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 EOT
 
 # For some reason, the following directories must be manually created by root
 # first because the actual user won't have rights to create them
-mkdir -p "${PYENV_ROOT}/shims"
-mkdir -p "${PYENV_ROOT}/versions"
+# mkdir -p "${PYENV_ROOT}/shims"
+# mkdir -p "${PYENV_ROOT}/versions"
 
 # Need to temporarily disable u flag
 set +u
@@ -37,7 +44,8 @@ source "${HOME}/.bashrc"
 set -u
 
 # Set the global version
-apt-get install -y --no-install-recommends \
+echo "Checking and installing prerequisites for python build..."
+sudo apt-get install -y --no-install-recommends \
     wget \
     build-essential llvm \
     libssl-dev python-openssl \
