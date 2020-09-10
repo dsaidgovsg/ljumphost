@@ -1,0 +1,15 @@
+---
+- name: Install consul from Internet
+  unarchive:
+    src: https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_linux_amd64.zip
+    dest: /usr/local/bin
+    remote_src: yes
+  become: yes
+# pip is broken for Python3 at the moment, keeps giving
+# fatal: [localhost]: FAILED! => {"changed": false, "msg": "No setuptools found in remote host, please install it first."}
+# - name: Install python-consul via pip for Consul AMI requirements
+#   pip:
+#     name: python-consul==1.1
+# Running pip install raw is always regarded as a "change"
+- name: Install python-consul via raw pip install
+  shell: pip install --no-cache-dir python-consul==1.1

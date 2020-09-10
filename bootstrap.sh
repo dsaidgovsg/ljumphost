@@ -73,7 +73,8 @@ pip install "ansible==${ANSIBLE_VERSION}"
 # Test the install python works
 ansible --version
 
-# Install ansible dependencies
-sudo apt-get install -y --no-install-recommends \
-    unzip \
-    python3-pip
+echo "Install python3-apt to allow Ansible to run apt..."
+sudo apt-get install -y --no-install-recommends python3-apt
+
+echo "Install setuptools to allow Ansible to run pip..."
+pip install --no-cache-dir setuptools==50

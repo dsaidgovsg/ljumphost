@@ -1,0 +1,14 @@
+---
+- name: Install unzip
+  apt:
+    pkg:
+    - unzip
+    state: latest
+    update_cache: True
+    install_recommends: no
+  become: yes
+# Because Ansible pip action needs setuptools, and setuptools needs pip to
+# install, we break the chicken-and-egg issue by running the pip raw
+# Running pip install raw is always regarded as a "change"
+- name: Install setuptools via raw pip
+  shell: pip install --no-cache-dir setuptools==50
