@@ -8,6 +8,7 @@
     nomad_version: 0.12.4
     vault_version: 1.3.10  # We don't use >= 1.4 for now due to Terraform provider issues
     packer_version: 1.6.2
+    cfssl_version: 1.4.1
   tasks:
   - name: Install common set of prequisites
     include_role:
@@ -27,3 +28,6 @@
   - name: Install packer
     include_role:
       name: "{{ playbook_dir }}/roles/packer"
+  - name: Install cfssl
+    include_role:
+      name: "{{ playbook_dir }}/roles/cfssl"

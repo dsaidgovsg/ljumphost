@@ -1,0 +1,13 @@
+---
+- name: Install cfssl from Internet
+  get_url:
+    url: https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version }}/cfssl_{{ cfssl_version }}_linux_amd64
+    dest: /usr/local/bin/cfssl
+    mode: 0755
+  become: yes
+- name: Install cfssljson from Internet
+  get_url:
+    url: https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version }}/cfssljson_{{ cfssl_version }}_linux_amd64
+    dest: /usr/local/bin/cfssljson
+    mode: 0755
+  become: yes
