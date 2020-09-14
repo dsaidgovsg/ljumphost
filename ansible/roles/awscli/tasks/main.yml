@@ -6,3 +6,16 @@
 # Running pip install raw is always regarded as a "change"
 - name: Install awscli via raw pip install
   shell: pip install --no-cache-dir awscli=={{ awscli_version }}
+- name: Create default awscli configuration file
+  block:
+  - name: Create directory to config directory if not exists
+    file:
+      path: "{{ ansible_env.HOME }}/.aws"
+      mode: "0755"
+      state: directory
+  - name: Inject awscli config content
+    copy:
+      content: |-
+        [default]
+        region = ap-southeast-1
+      dest: "{{ ansible_env.HOME }}/.aws/config"
