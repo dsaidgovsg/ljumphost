@@ -40,3 +40,7 @@ shell must have the update `PATH` env vars from the previous section.
 
 Simply run `run-ansible.sh`, to have all the relevant Terraform and other
 Hashicorp CLI tools instaled.
+
+Once the `./run-ansible.sh` has been run to completion, either exit and start a
+new shell, or run `exec $SHELL` for `pyenv` to perform the re-hashing to
+generate the shims for the new CLIs installed via `pip`.
