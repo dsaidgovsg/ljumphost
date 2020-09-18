@@ -50,19 +50,17 @@ set -u
 echo "Checking and installing prerequisites for python build..."
 sudo dnf install -y \
     "@Development Tools" \
-    libffi-devel \
-    zlib-devel \
-    bzip2-devel \
-    readline-devel \
-    sqlite-devel \
     wget \
-    curl \
     llvm \
-    ncurses-devel \
     openssl-devel \
-    lzma-sdk-devel \
-    libyaml-devel \
-    redhat-rpm-config
+    tk-devel \
+    libffi-devel \
+    readline-devel \
+    ncurses-devel \
+    sqlite-devel \
+    xz-devel \
+    zlib-devel \
+    bzip2-devel
 
 # Get rid of the installed python2 symbolic link due to python-openssl to prevent confusion
 # echo "Get rid of python2 from PATH before install python via pyenv..."
