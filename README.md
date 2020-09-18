@@ -2,9 +2,9 @@
 
 True jumphost set-up and instructions repository.
 
-This is a two-step set-up, bootstrap + ansible. This assumes a Debian/Ubuntu
-distro with `apt` being the distro package manager, and is tested against Ubuntu
-18.04 AMI.
+This is a two-step set-up, bootstrap + ansible. This assumes a RHEL8 distro with
+`dnf` being the distro package manager, and is tested against a standard RHEL8
+AMI.
 
 You will need to `git clone` this into the true jumphost instance.
 

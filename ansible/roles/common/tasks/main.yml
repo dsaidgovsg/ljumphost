@@ -1,11 +1,9 @@
 ---
 - name: Install unzip
-  apt:
-    pkg:
-    - unzip
+  dnf:
+    name:
+      - unzip
     state: latest
-    update_cache: True
-    install_recommends: no
   become: yes
 # Because Ansible pip action needs setuptools, and setuptools needs pip to
 # install, we break the chicken-and-egg issue by running the pip raw

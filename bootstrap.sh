@@ -20,8 +20,8 @@ fi
 
 # Set up prerequisites
 echo "Checking and installing prerequisites for pyenv..."
-sudo apt-get update
-sudo apt-get install -y --no-install-recommends curl ca-certificates git
+sudo dnf upgrade
+sudo dnf install -y curl ca-certificates git
 
 # Installs to PYENV_ROOT="${HOME}/.pyenv" by default
 curl https://pyenv.run | bash
@@ -48,14 +48,21 @@ set -u
 
 # Set the global version
 echo "Checking and installing prerequisites for python build..."
-sudo apt-get install -y --no-install-recommends \
+sudo dnf install -y \
+    "@Development Tools" \
+    libffi-devel \
+    zlib-devel \
+    bzip2-devel \
+    readline-devel \
+    sqlite-devel \
     wget \
-    build-essential llvm \
-    libssl-dev python-openssl \
-    tk-dev libffi-dev \
-    libreadline-dev libncurses5-dev libncursesw5-dev \
-    libsqlite3-dev \
-    xz-utils liblzma-dev zlib1g-dev libbz2-dev
+    curl \
+    llvm \
+    ncurses-devel \
+    openssl-devel \
+    lzma-sdk-devel \
+    libyaml-devel \
+    redhat-rpm-config
 
 # Get rid of the installed python2 symbolic link due to python-openssl to prevent confusion
 # echo "Get rid of python2 from PATH before install python via pyenv..."
@@ -73,8 +80,8 @@ pip install "ansible==${ANSIBLE_VERSION}"
 # Test the install python works
 ansible --version
 
-echo "Install python3-apt to allow Ansible to run apt..."
-sudo apt-get install -y --no-install-recommends python3-apt
+echo "Install python3-dnf to allow Ansible to run dnf..."
+sudo dnf install -y python3-dnf
 
 echo "Install setuptools to allow Ansible to run pip..."
 pip install --no-cache-dir setuptools==50
