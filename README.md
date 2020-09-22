@@ -51,7 +51,10 @@ By default, the "convenience" features are automatically enabled. These include:
 - Removal of `TMOUT` to prevent SSH shell session from timeout
 - Allowing SSH service TCP forwarding
 - Adding current user to `docker` group
-  - Note: This requires logout and login of shell to take effect.
+  - This requires logout and login of shell to take effect.
+  - For VSCode Remote SSH, you need to run the command "Kill VS Code Server on
+    Host" first:
+    <https://github.com/microsoft/vscode-remote-release/issues/1997>.
 
 If you do not want the "convenience" features to be enabled, you should instead
 run:
