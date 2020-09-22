@@ -10,7 +10,7 @@
     - name: Amend TCP forwarding config
       lineinfile:
         path: /etc/ssh/sshd_config
-        insertafter: "^Allowtcpforwarding no$"
+        regexp: "^Allowtcpforwarding no$"
         line: "AllowTcpForwarding yes"
       become: yes
     - name: Restart SSH service
