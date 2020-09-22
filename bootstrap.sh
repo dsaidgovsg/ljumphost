@@ -17,7 +17,7 @@ fi
 sudo dnf install -y python3 python3-pip
 
 echo "Install ansible via pip..."
-python3 -m pip install "ansible==${ANSIBLE_VERSION}"
+sudo python3 -m pip install "ansible==${ANSIBLE_VERSION}"
 
 # Test the install python works
 ansible --version
@@ -26,4 +26,4 @@ echo "Install python3-dnf to allow Ansible to run dnf..."
 sudo dnf install -y python3-dnf
 
 echo "Install setuptools to allow Ansible to run pip..."
-python3 -m pip install --no-cache-dir setuptools==50
+sudo python3 -m pip install --no-cache-dir setuptools==50
