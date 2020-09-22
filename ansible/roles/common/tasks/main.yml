@@ -1,8 +1,14 @@
 ---
-- name: Install unzip
+- name: Install required dependencies from dnf
   dnf:
     name:
       - unzip
+    state: latest
+  become: yes
+  - name: Install nice-to-have dependencies from dnf
+  dnf:
+    name:
+      - vim
     state: latest
   become: yes
 # Because Ansible pip action needs setuptools, and setuptools needs pip to
