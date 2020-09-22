@@ -10,7 +10,13 @@ You will need to `git clone` this into the true jumphost instance.
 
 ## Bootstrap
 
-Simply run `./bootstrap.sh`. This installs the following:
+Simply run:
+
+```bash
+./bootstrap.sh
+```
+
+which installs the following:
 
 - `python`
   - Uses the default system / `dnf` set-up which is version `3.6.Z`. Since many
@@ -32,5 +38,22 @@ PATH values for subsequent set-up parts.
 You will need the previous bootstrap script to run successfully, and the current
 shell must have the update `PATH` env vars from the previous section.
 
-Simply run `run-ansible.sh`, to have all the relevant Terraform and other
-Hashicorp CLI tools instaled.
+Simply run:
+
+```bash
+./run-ansible.sh
+```
+
+to have all the relevant Terraform and other Hashicorp CLI tools installed.
+
+By default, the "convenience" features are automatically enabled. These include:
+
+- Removal of `TMOUT` to prevent SSH shell session from timeout
+- Allowing SSH service TCP forwarding
+
+If you do not want the "convenience" features to be enabled, you should instead
+run:
+
+```bash
+ALLOW_CONVENIENCE=false ./run-ansible.sh
+```

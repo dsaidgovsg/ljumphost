@@ -1,0 +1,20 @@
+---
+- name: Remove shell timeout
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.bashrc"
+    insertafter: EOF
+    line: unset TMOUT
+# This is useful for allow VSCode Remote SSH feature
+- name: Allow TCP forwarding for SSHD
+  block:
+    - name: Amend TCP forwarding config
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        insertafter: "^Allowtcpforwarding no$"
+        line: "AllowTcpForwarding yes"
+      become: yes
+    - name: Restart SSH service
+      service:
+        name: sshd
+        state: restarted
+      become: yes

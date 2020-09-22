@@ -11,6 +11,7 @@
     packer_version: 1.6.2
     awscli_version: 1.18.137
     cfssl_version: 1.4.1
+    allow_convenience: true
   tasks:
   - name: Install common set of prequisites
     include_role:
@@ -39,3 +40,7 @@
   - name: Install cfssl
     include_role:
       name: "{{ playbook_dir }}/roles/cfssl"
+  - name: Allow convenience features
+    include_role:
+      name: "{{ playbook_dir }}/roles/convenience"
+    when: allow_convenience
