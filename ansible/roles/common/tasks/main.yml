@@ -5,7 +5,7 @@
       - unzip
     state: latest
   become: yes
-  - name: Install nice-to-have dependencies from dnf
+- name: Install nice-to-have dependencies from dnf
   dnf:
     name:
       - vim
