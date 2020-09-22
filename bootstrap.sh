@@ -17,7 +17,7 @@ fi
 sudo dnf install -y python3 python3-pip
 
 echo "Install ansible via pip..."
-sudo python3 -m pip install "ansible==${ANSIBLE_VERSION}"
+sudo bash -c "umask 022 && python3 -m pip install \"ansible==${ANSIBLE_VERSION}\""
 
 # Test the install python works
 ansible --version
