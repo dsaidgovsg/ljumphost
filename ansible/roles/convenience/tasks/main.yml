@@ -12,9 +12,23 @@
         path: /etc/ssh/sshd_config
         regexp: "^Allowtcpforwarding no$"
         line: "AllowTcpForwarding yes"
+        backrefs: yes  # To prevent lines to be duplicated
       become: yes
     - name: Restart SSH service
       service:
         name: sshd
         state: restarted
+      become: yes
+- name: Add "{{ ansible_env.USER }}" to docker group
+  block:
+    - name: Ensure docker group exists
+      group:
+        name: docker
+        state: present
+      become: yes
+    - name: Add "{{ ansible_env.USER }}" to group
+      user:
+        name: "{{ ansible_env.USER }}"
+        groups: docker
+        append: yes
       become: yes

@@ -50,6 +50,8 @@ By default, the "convenience" features are automatically enabled. These include:
 
 - Removal of `TMOUT` to prevent SSH shell session from timeout
 - Allowing SSH service TCP forwarding
+- Adding current user to `docker` group
+  - Note: This requires logout and login of shell to take effect.
 
 If you do not want the "convenience" features to be enabled, you should instead
 run:
