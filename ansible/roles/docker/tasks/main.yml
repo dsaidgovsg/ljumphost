@@ -31,3 +31,10 @@
     name: "docker-ce-{{ docker_version }}"
     state: present
   become: yes
+- name: Enable Docker to start and run
+  service:
+    name: docker
+    enabled: yes
+    state: started
+    use: service
+  become: yes
