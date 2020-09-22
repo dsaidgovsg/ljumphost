@@ -4,6 +4,7 @@
   vars: 
     terraform_version: 0.12.24
     terragrunt_version: 0.22.5
+    docker_version: 18.06.3.ce-3.el7
     consul_version: 1.8.3
     nomad_version: 0.12.4
     vault_version: 1.3.10  # We don't use >= 1.4 for now due to Terraform provider issues
@@ -14,19 +15,22 @@
   - name: Install common set of prequisites
     include_role:
       name: "{{ playbook_dir }}/roles/common"
-  - name: Install terraform and terragrunt
+  - name: Install Docker
+    include_role:
+      name: "{{ playbook_dir }}/roles/docker"
+  - name: Install Terraform and Terragrunt
     include_role:
       name: "{{ playbook_dir }}/roles/terraform"
-  - name: Install consul
+  - name: Install Consul
     include_role:
       name: "{{ playbook_dir }}/roles/consul"
-  - name: Install nomad
+  - name: Install Nomad
     include_role:
       name: "{{ playbook_dir }}/roles/nomad"
-  - name: Install vault
+  - name: Install Vault
     include_role:
       name: "{{ playbook_dir }}/roles/vault"
-  - name: Install packer
+  - name: Install Packer
     include_role:
       name: "{{ playbook_dir }}/roles/packer"
   - name: Install awscli

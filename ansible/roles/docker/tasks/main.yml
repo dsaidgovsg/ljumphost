@@ -1,0 +1,33 @@
+---
+- name: Remove old dependencies
+  dnf:
+    name:
+      - docker
+      - docker-client
+      - docker-client-latest
+      - docker-common
+      - docker-latest
+      - docker-latest-logrotate
+      - docker-logrotate
+      - docker-engine
+    state: absent
+  become: yes
+- name: Check dependencies
+  dnf:
+    name:
+      - yum-utils
+    state: latest
+  become: yes
+- name: Add Docker repository into yum
+  yum_repository:
+    name: docker-ce
+    description: Docker CE Stable - $basearch
+    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    gpgkey: https://download.docker.com/linux/centos/gpg
+    gpgcheck: yes
+  become: yes
+- name: Install Docker
+  dnf:
+    name: "docker-ce-{{ docker_version }}"
+    state: present
+  become: yes
