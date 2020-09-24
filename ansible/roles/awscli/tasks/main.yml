@@ -2,6 +2,7 @@
 - name: Install awscli via pip
   pip:
     name: awscli=={{ awscli_version }}
+    umask: "0022"
   become: yes
 - name: Create default awscli configuration file
   block:

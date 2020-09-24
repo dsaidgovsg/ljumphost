@@ -10,6 +10,7 @@
     - name: From pip
       pip:
         name: setuptools==50
+        umask: "0022"
       become: yes
 - name: Install nice-to-have dependencies from dnf
   dnf:

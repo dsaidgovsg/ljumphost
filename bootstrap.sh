@@ -13,11 +13,15 @@ if ! command -v sudo > /dev/null; then
 fi
 
 # Ensure python3 is installed
-# install_pyenv_python
 sudo dnf install -y python3 python3-pip
 
+# cryptography is an unspecified requirement for paramiko (ansible)
+# thus needing to be explicitly specified here for installation
 echo "Install ansible via pip..."
-sudo bash -c "umask 022 && python3 -m pip install \"ansible==${ANSIBLE_VERSION}\""
+sudo bash -c "umask 022 &&
+    python3 -m pip install \
+    \"ansible==${ANSIBLE_VERSION}\" \
+    \"cryptography>=2.5\""
 
 # Test the install python works
 ansible --version
