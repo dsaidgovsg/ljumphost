@@ -4,6 +4,7 @@
     - name: From dnf
       dnf:
         name:
+          - jq
           - unzip
         state: latest
       become: yes
