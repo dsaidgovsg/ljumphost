@@ -40,6 +40,9 @@
   - name: Install cfssl
     include_role:
       name: "{{ playbook_dir }}/roles/cfssl"
+  - name: Install openvpn
+    include_role:
+      name: "{{ playbook_dir }}/roles/openvpn"
   - name: Allow convenience features
     include_role:
       name: "{{ playbook_dir }}/roles/convenience"
