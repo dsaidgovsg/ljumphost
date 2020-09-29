@@ -46,4 +46,4 @@
   - name: Allow convenience features
     include_role:
       name: "{{ playbook_dir }}/roles/convenience"
-    when: "{{ allow_convenience | bool }}"
+    when: allow_convenience | bool
