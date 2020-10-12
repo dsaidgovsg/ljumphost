@@ -10,6 +10,7 @@
     vault_version: 1.3.10  # We don't use >= 1.4 for now due to Terraform provider issues
     packer_version: 1.6.2
     awscli_version: 1.18.137
+    awless_version: 0.1.11
     cfssl_version: 1.4.1
     allow_convenience: true
   tasks:
@@ -37,6 +38,9 @@
   - name: Install awscli
     include_role:
       name: "{{ playbook_dir }}/roles/awscli"
+  - name: Install awless
+    include_role:
+      name: "{{ playbook_dir }}/roles/awless"
   - name: Install cfssl
     include_role:
       name: "{{ playbook_dir }}/roles/cfssl"

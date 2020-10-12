@@ -1,0 +1,7 @@
+---
+- name: Install awless from Internet
+  unarchive:
+    src: https://github.com/wallix/awless/releases/download/v{{ awless_version }}/awless-linux-amd64.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
+  become: yes
