@@ -22,7 +22,7 @@
   yum_repository:
     name: docker-ce
     description: Docker CE Stable - $basearch
-    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    baseurl: https://download.docker.com/linux/centos/8/$basearch/stable
     gpgkey: https://download.docker.com/linux/centos/gpg
     gpgcheck: yes
   become: yes
