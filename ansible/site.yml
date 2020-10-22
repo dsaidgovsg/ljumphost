@@ -4,7 +4,7 @@
   vars: 
     terraform_version: 0.12.24
     terragrunt_version: 0.22.5
-    docker_version: 18.06.3.ce-3.el7
+    docker_version: 19.03.13
     consul_version: 1.8.3
     nomad_version: 0.12.4
     vault_version: 1.5.4
