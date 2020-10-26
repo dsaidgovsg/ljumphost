@@ -11,3 +11,15 @@
     dest: /usr/local/bin/terragrunt
     mode: 0755
   become: yes
+
+- name: Install custom smallutil provider
+  block:
+    - name: Create terraform provider directory
+      file:
+        path: "{{ ansible_env.HOME }}/.terraform.d/plugins"
+        state: directory
+    - name: Download provider binary
+      unarchive:
+        src: https://github.com/guangie88/terraform-provider-smallutil/releases/download/v0.4.1/terraform-provider-smallutil_linux_amd64_v0.4.1.zip
+        dest: "{{ ansible_env.HOME }}/.terraform.d/plugins"
+        remote_src: yes
