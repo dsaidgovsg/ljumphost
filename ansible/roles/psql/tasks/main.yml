@@ -1,0 +1,6 @@
+- name: Install Postgres to get psql CLI
+  dnf:
+    name:
+      - postgresql
+    state: latest
+  become: yes
