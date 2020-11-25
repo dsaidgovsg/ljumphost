@@ -5,6 +5,7 @@
       dnf:
         name:
           - jq
+          - socat
           - unzip
         state: latest
       become: yes
