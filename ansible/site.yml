@@ -8,7 +8,7 @@
     consul_version: 1.8.3
     nomad_version: 0.12.4
     vault_version: 1.5.4
-    packer_version: 1.6.2
+    packer_version: 1.6.5
     awscli_version: 1.18.137
     awless_version: 0.1.11
     cfssl_version: 1.4.1
