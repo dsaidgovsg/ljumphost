@@ -1,0 +1,20 @@
+---
+- name: Download Kubernetes client archive
+  get_url:
+    url: https://dl.k8s.io/v{{ kubectl_version }}/kubernetes-client-linux-amd64.tar.gz
+    dest: /tmp/kubernetes-client-linux-amd64.tar.gz
+    # https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.19.md#client-binaries
+    checksum: sha512:7e65358a19b4eabfbbf886061098d7edc1268ab59a3e0f813a264ff525bed8c76f4f0bd5bcb151d8a05dcb1b2f25d874e2346d448725e701614439a27f960079
+- name: Extract kubectl from archive
+  unarchive:
+    src: /tmp/kubernetes-client-linux-amd64.tar.gz
+    dest: /usr/local/bin/
+    mode: 0755
+    extra_opts:  # To flatten the nested directory containing the binary
+    - --transform
+    - s/.*\///g
+  become: yes
+- name: Delete downloaded archive
+  file:
+    path: /tmp/kubernetes-client-linux-amd64.tar.gz
+    state: absent
