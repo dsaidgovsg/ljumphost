@@ -12,6 +12,7 @@
     awscli_version: 1.18.137
     awless_version: 0.1.11
     cfssl_version: 1.4.1
+    kubectl_version: 1.19.4
     allow_convenience: true
   tasks:
   - name: Install common set of prequisites
@@ -44,6 +45,9 @@
   - name: Install cfssl
     include_role:
       name: "{{ playbook_dir }}/roles/cfssl"
+  - name: Install kubectl
+    include_role:
+      name: "{{ playbook_dir }}/roles/kubectl"
   - name: Install openvpn
     include_role:
       name: "{{ playbook_dir }}/roles/openvpn"
