@@ -10,6 +10,7 @@
     url: https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64
     dest: /usr/local/bin/terragrunt
     mode: 0755
+    force: yes
   become: yes
 
 - name: Install custom smallutil provider
