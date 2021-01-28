@@ -12,7 +12,7 @@ on:
 
 jobs:
   pr-label:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: TimonVS/pr-labeler-action@v3
         with:

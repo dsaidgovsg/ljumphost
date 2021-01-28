@@ -1,5 +1,5 @@
-name-template: 'v$NEXT_MAJOR_VERSION' # defaults to patch version
-tag-template: 'v$NEXT_MAJOR_VERSION'
+name-template: 'v$RESOLVED_VERSION 🌈'
+tag-template: 'v$RESOLVED_VERSION'
 
 branches:
   - master
@@ -9,13 +9,17 @@ categories:
     label: 'BREAKING CHANGE'
 
   - title: ✨ Features
-    label: 'feat'
+    labels:
+      - 'feat'
+      - 'feature'
 
   - title: 🐛 Bug Fixes
     label: 'fix'
 
   - title: 🚀 Improvements
-    label: 'perf'
+    labels:
+      - 'perf'
+      - 'performance'
 
   - title: 🔧 Code Improvements
     label: 'refactor'
@@ -33,16 +37,39 @@ categories:
     label: 'test'
 
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+
+version-resolver:
+  major:
+    labels:
+      - 'BREAKING CHANGE'
+  minor:
+    labels:
+      - 'feat'
+      - 'feature'
+  patch:
+    labels:
+      - 'fix'
+      - 'perf'
+      - 'performance'
+      - 'refactor'
+      - 'chore'
+      - 'ci'
+      - 'build'
+      - 'test'
+  default: patch
+
 template: |
   ## Changes
+
   $CHANGES
 
 replacers:
   # e.g. chore: change xxx -> change xxx
-  - search: '/(?:feat:|fix:|perf:|refactor:|chore:|ci:|build:|test:)\s*/g'
+  - search: '/(?:feat:|feature:|fix:|perf:|performance:|refactor:|chore:|ci:|build:|test:)\s*/g'
     replace: ''
   # e.g. feat(web): add xxx -> web: add xxx
-  - search: '/(?:feat|fix|perf|refactor|chore|ci|build|test)\((\w+)\):\s*/g'
+  - search: '/(?:feat|feature|fix|perf|performance|refactor|chore|ci|build|test)\((\w+)\):\s*/g'
     replace: '$1: '
 
   # For capitalizing the first letter in every bullet point
