@@ -1,0 +1,11 @@
+name: PR Size Labeler
+on: pull_request
+
+jobs:
+  size-label:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: size-label
+        uses: "pascalgn/size-label-action@v0.4.2"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
