@@ -1,0 +1,8 @@
+---
+- name: Download tmux
+  get_url:
+    url: https://github.com/nelsonenzo/tmux-appimage/releases/download/tmux3.1b/tmux-3.1b-x86_64.AppImage
+    dest: /usr/local/bin/tmux
+    mode: 0755
+    force: yes
+  become: yes

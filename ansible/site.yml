@@ -54,6 +54,9 @@
   - name: Install psql
     include_role:
       name: "{{ playbook_dir }}/roles/psql"
+  - name: Install tmux
+    include_role:
+      name: "{{ playbook_dir }}/roles/tmux"
   - name: Allow convenience features
     include_role:
       name: "{{ playbook_dir }}/roles/convenience"
