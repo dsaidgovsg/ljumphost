@@ -8,8 +8,8 @@
   become: yes
 # https://github.com/AppImage/AppImageKit/wiki/FUSE
 # https://bugzilla.redhat.com/show_bug.cgi?id=1758884
-- name: Install FUSE
-  dnf:
-    name: https://kojipkgs.fedoraproject.org//packages/fuse-sshfs/3.5.1/1.fc29/x86_64/fuse-sshfs-3.5.1-1.fc29.x86_64.rpm
-    state: present
-  become: yes
+# - name: Install FUSE
+#   dnf:
+#     name: https://kojipkgs.fedoraproject.org//packages/fuse-sshfs/3.5.1/1.fc29/x86_64/fuse-sshfs-3.5.1-1.fc29.x86_64.rpm
+#     state: present
+#   become: yes
