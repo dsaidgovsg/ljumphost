@@ -9,6 +9,7 @@
           - unzip
           - wget
           - the_silver_searcher
+          - ripgrep
         state: latest
       become: yes
     - name: From pip
