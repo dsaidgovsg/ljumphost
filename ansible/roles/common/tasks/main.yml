@@ -8,6 +8,7 @@
           - socat
           - unzip
           - wget
+          - the_silver_searcher
         state: latest
       become: yes
     - name: From pip
