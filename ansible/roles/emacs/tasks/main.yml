@@ -7,10 +7,7 @@
           - emacs
         state: latest
       become: yes
-- name: Install spacemacs config
-  get_url:
-    url: https://github.com/syl20bnr/spacemacs
-    dest: ../.emacs.d
-    mode: 0755
-    force: yes
-  become: yes
+- name: Checkout a github repo and use refspec to fetch all pull requests
+  git:
+    repo: https://github.com/syl20bnr/spacemacs
+    dest: ~/.emacs.d
