@@ -19,6 +19,8 @@
           - socat
           - unzip
           - wget
+          - trash-cli
+          - htop
         state: latest
       become: yes
     - name: From pip
