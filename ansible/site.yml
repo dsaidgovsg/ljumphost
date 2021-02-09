@@ -13,6 +13,7 @@
     awless_version: 0.1.11
     cfssl_version: 1.4.1
     kubectl_version: 1.19.4
+    helm_version: 1.11
     allow_convenience: true
   tasks:
   - name: Install common set of prequisites

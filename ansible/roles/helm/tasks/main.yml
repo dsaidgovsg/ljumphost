@@ -1,0 +1,20 @@
+---
+- name: Download Helm client archive
+  get_url:
+    url: https://github.com/helm/helm/releases/download/v{{ helm_version }}/helm-v{{ helm_version }}-linux-amd64.tar.gz.asc
+    dest: /tmp/helm-client-linux-amd64.tar.gz
+    # https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.19.md#client-binaries
+    checksum: sha256:https://github.com/helm/helm/releases/download/v{{ helm_version }}/helm-v{{ helm_version }}-linux-amd64.tar.gz.sha256.asc
+- name: Extract helm from archive
+  unarchive:
+    src: /tmp/helm-client-linux-amd64.tar.gz
+    dest: /usr/local/bin/
+    mode: 0755
+    extra_opts:  # To flatten the nested directory containing the binary
+    - --transform
+    - s/.*\///g
+  become: yes
+- name: Delete downloaded archive
+  file:
+    path: /tmp/helm-client-linux-amd64.tar.gz
+    state: absent
