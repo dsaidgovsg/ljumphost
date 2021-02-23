@@ -28,6 +28,7 @@
         name:
           - netaddr
           - setuptools
+          - boto3
         umask: "0022"
       become: yes
 - name: Install nice-to-have dependencies from dnf
