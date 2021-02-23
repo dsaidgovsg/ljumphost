@@ -13,6 +13,7 @@
     awless_version: 0.1.11
     cfssl_version: 1.4.1
     kubectl_version: 1.19.4
+    helm_version: 1.11
     allow_convenience: true
   tasks:
   - name: Install common set of prequisites
@@ -39,6 +40,9 @@
   - name: Install awscli
     include_role:
       name: "{{ playbook_dir }}/roles/awscli"
+  - name: Install aws-iam-authenticator
+    include_role:
+      name: "{{ playbook_dir }}/roles/aws_iam_auth"
   - name: Install awless
     include_role:
       name: "{{ playbook_dir }}/roles/awless"
@@ -48,6 +52,9 @@
   - name: Install kubectl
     include_role:
       name: "{{ playbook_dir }}/roles/kubectl"
+  - name: Install helm
+    include_role:
+      name: "{{ playbook_dir }}/roles/helm"
   - name: Install openvpn
     include_role:
       name: "{{ playbook_dir }}/roles/openvpn"

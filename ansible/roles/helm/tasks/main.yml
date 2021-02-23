@@ -1,0 +1,19 @@
+---
+- name: Download Helm install script
+  get_url:
+    url: https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+    dest: ~/get-helm.sh
+    mode: 0700
+- name: Install helm
+  command: ~/get-helm.sh
+- name: Change helm to executable
+  file:
+    path: /usr/local/bin/helm
+    owner: root
+    group: root
+    mode: '0755'
+  become: yes
+- name: Delete install script
+  file:
+    path: ~/get-helm.sh
+    state: absent
