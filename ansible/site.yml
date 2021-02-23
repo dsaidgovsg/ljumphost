@@ -40,6 +40,9 @@
   - name: Install awscli
     include_role:
       name: "{{ playbook_dir }}/roles/awscli"
+  - name: Install aws-iam-authenticator
+    include_role:
+      name: "{{ playbook_dir }}/roles/aws_iam_auth"
   - name: Install awless
     include_role:
       name: "{{ playbook_dir }}/roles/awless"
@@ -49,6 +52,9 @@
   - name: Install kubectl
     include_role:
       name: "{{ playbook_dir }}/roles/kubectl"
+  - name: Install helm
+    include_role:
+      name: "{{ playbook_dir }}/roles/helm"
   - name: Install openvpn
     include_role:
       name: "{{ playbook_dir }}/roles/openvpn"

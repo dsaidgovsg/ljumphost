@@ -9,9 +9,6 @@
     src: /tmp/aws-iam-authenticator-linux-amd64.tar.gz
     dest: /usr/local/bin/
     mode: 0755
-    extra_opts:  # To flatten the nested directory containing the binary
-    - --transform
-    - s/.*\///g
   become: yes
 - name: Delete downloaded archive
   file:
