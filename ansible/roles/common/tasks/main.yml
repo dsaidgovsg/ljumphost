@@ -19,7 +19,6 @@
           - socat
           - unzip
           - wget
-          - trash-cli
           - htop
         state: latest
       become: yes
@@ -29,6 +28,7 @@
           - netaddr
           - setuptools
           - boto3
+          - trash-cli
         umask: "0022"
       become: yes
 - name: Install nice-to-have dependencies from dnf

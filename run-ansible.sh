@@ -4,7 +4,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 ALLOW_CONVENIENCE="${ALLOW_CONVENIENCE:-true}"
-ALLOW_EMACS="${ALLOW_CONVENIENCE:-false}"
+ALLOW_EMACS="${ALLOW_EMACS:-false}"
 
 ansible-playbook \
     -i "localhost," \
