@@ -2,15 +2,15 @@
 - name: Download aws-iam-authenticator archive
   get_url:
     url: https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/aws-iam-authenticator
-    dest: /tmp/aws-iam-authenticator-linux-amd64.tar.gz
+    dest: ~/aws-iam-authenticator-linux-amd64.tar.gz
     checksum: sha256:https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/aws-iam-authenticator.sha256
 - name: Extract helm from archive
   unarchive:
-    src: /tmp/aws-iam-authenticator-linux-amd64.tar.gz
+    src: ~/aws-iam-authenticator-linux-amd64.tar.gz
     dest: /usr/local/bin/
     mode: 0755
   become: yes
 - name: Delete downloaded archive
   file:
-    path: /tmp/aws-iam-authenticator-linux-amd64.tar.gz
+    path: ~/aws-iam-authenticator-linux-amd64.tar.gz
     state: absent
