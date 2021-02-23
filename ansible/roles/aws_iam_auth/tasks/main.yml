@@ -5,3 +5,4 @@
     dest: /usr/local/bin/aws-iam-authenticator-linux-amd64.tar.gz
     checksum: sha256:https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/aws-iam-authenticator.sha256
     mode: 0755
+  become: yes
