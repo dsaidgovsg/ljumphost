@@ -1,16 +1,12 @@
 ---
-- name: Download Helm client archive
+- name: Download Helm install script
   get_url:
-    url: https://github.com/helm/helm/releases/download/v{{ helm_version }}/helm-v{{ helm_version }}-linux-amd64.tar.gz.asc
-    dest: /tmp/helm-client-linux-amd64.tar.gz
-    checksum: sha256:https://github.com/helm/helm/releases/download/v{{ helm_version }}/helm-v{{ helm_version }}-linux-amd64.tar.gz.sha256.asc
-- name: Extract helm from archive
-  unarchive:
-    src: /tmp/helm-client-linux-amd64.tar.gz
-    dest: /usr/local/bin/
-    mode: 0755
-  become: yes
-- name: Delete downloaded archive
+    url: https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+    dest: ~/get-helm.sh
+    mode: 0700
+- name: Install helm
+  command: ~/get-helm.sh
+- name: Delete install script
   file:
-    path: /tmp/helm-client-linux-amd64.tar.gz
+    path: ~/get-helm.sh
     state: absent
