@@ -6,6 +6,13 @@
     mode: 0700
 - name: Install helm
   command: ~/get-helm.sh
+- name: Change helm to executable
+  file:
+    path: /usr/local/bin/helm
+    owner: root
+    group: root
+    mode: '0755'
+  become: yes
 - name: Delete install script
   file:
     path: ~/get-helm.sh
