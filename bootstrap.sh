@@ -15,6 +15,10 @@ fi
 # Ensure python3 is installed
 sudo dnf install -y python3 python3-pip
 
+# Ensure both pip and setuptools are updated before using
+sudo python3 -m pip install --upgrade setuptools
+sudo python3 -m pip install --upgrade pip
+
 # cryptography is an unspecified requirement for paramiko (ansible)
 # thus needing to be explicitly specified here for installation
 echo "Install ansible via pip..."
