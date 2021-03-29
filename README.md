@@ -72,16 +72,3 @@ If you do not want the "convenience" features to be enabled, you should instead 
 ```bash
 ALLOW_CONVENIENCE=false ./run-ansible.sh
 ```
-
-## Running tmux
-
-For convenience, we use the prebuilt AppImage release for `tmux` rather than downloading
-it via `dnf` for a more updated version. 
-
-You will need to add the following line:
-
-```bash
-alias tmux="tmux --appimage-extract-and-run"
-``` 
-
-to your `.bashrc` for it to work.
