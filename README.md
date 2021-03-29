@@ -72,3 +72,17 @@ If you do not want the "convenience" features to be enabled, you should instead 
 ```bash
 ALLOW_CONVENIENCE=false ./run-ansible.sh
 ```
+
+## Using tmux
+
+Some users may experience the following:
+https://stackoverflow.com/questions/21523815/tmux-open-terminal-failed-missing-or-unsuitable-terminal-xterm-256color/48618841
+```bash
+$ tmux
+open terminal failed: missing or unsuitable terminal: xterm-256color
+```
+
+In that case, a helpful workaround would be adding the following to your `.bash_profile`
+```bash
+export TERM=xterm
+```
