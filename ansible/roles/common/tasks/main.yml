@@ -1,4 +1,15 @@
 ---
+- name: Add EPEL repository
+  dnf:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    state: present
+  become: yes
+- name: Install the_silver_searcher
+  yum:
+    name:
+      - the_silver_searcher
+    state: present
+  become: yes
 - name: Install required dependencies
   block:
     - name: From dnf
@@ -8,6 +19,7 @@
           - socat
           - unzip
           - wget
+          - htop
         state: latest
       become: yes
     - name: From pip
@@ -15,6 +27,8 @@
         name:
           - netaddr
           - setuptools
+          - boto3
+          - trash-cli
         umask: "0022"
       become: yes
 - name: Install nice-to-have dependencies from dnf

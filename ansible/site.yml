@@ -5,8 +5,8 @@
     terraform_version: 0.13.6
     terragrunt_version: 0.26.0
     docker_version: 19.03.13
-    consul_version: 1.8.3
-    nomad_version: 0.12.4
+    consul_version: 1.9.2
+    nomad_version: 1.0.2
     vault_version: 1.5.4
     packer_version: 1.6.5
     awscli_version: 1.18.137
@@ -15,6 +15,7 @@
     kubectl_version: 1.19.4
     helm_version: 1.11
     allow_convenience: true
+    allow_emacs: false
   tasks:
   - name: Install common set of prequisites
     include_role:
@@ -61,7 +62,14 @@
   - name: Install psql
     include_role:
       name: "{{ playbook_dir }}/roles/psql"
+  - name: Install tmux
+    include_role:
+      name: "{{ playbook_dir }}/roles/tmux"
   - name: Allow convenience features
     include_role:
       name: "{{ playbook_dir }}/roles/convenience"
     when: allow_convenience | bool
+  - name: Allow emacs
+    include_role:
+      name: "{{ playbook_dir }}/roles/emacs"
+    when: allow_emacs | bool

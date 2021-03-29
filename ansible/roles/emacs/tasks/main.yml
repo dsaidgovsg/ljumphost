@@ -1,0 +1,13 @@
+---
+- name: Install emacs
+  block:
+    - name: From dnf
+      dnf:
+        name:
+          - emacs
+        state: latest
+      become: yes
+- name: Checkout a github repo and use refspec to fetch all pull requests
+  git:
+    repo: https://github.com/syl20bnr/spacemacs
+    dest: ~/.emacs.d
