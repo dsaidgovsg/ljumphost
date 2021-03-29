@@ -82,7 +82,7 @@ $ tmux
 open terminal failed: missing or unsuitable terminal: xterm-256color
 ```
 
-In that case, a helpful workaround would be adding the following to your `.bash_profile`
+In that case, a helpful workaround would be adding the following to your `.bashrc`
 ```bash
-export TERM=xterm
+alias tmux="TERM=screen tmux -2"
 ```
