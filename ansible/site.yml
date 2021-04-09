@@ -73,3 +73,6 @@
     include_role:
       name: "{{ playbook_dir }}/roles/emacs"
     when: allow_emacs | bool
+  - name: Enable automatically security updates
+    include_role:
+      name: "{{ playbook_dir }}/roles/security"

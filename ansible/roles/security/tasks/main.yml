@@ -1,0 +1,7 @@
+---
+- name: Enable update of security patches daily as root
+  cron:
+    name: DNF security update
+    special_time: daily
+    job: /usr/bin/dnf update --security -y
+  become: yes
