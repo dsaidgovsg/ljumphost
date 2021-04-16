@@ -5,7 +5,7 @@
     state: present
   become: yes
 - name: Install the_silver_searcher
-  yum:
+  dnf:
     name:
       - the_silver_searcher
     state: present
@@ -15,6 +15,8 @@
     - name: From dnf
       dnf:
         name:
+          - gcc
+          - python3-devel
           - jq
           - socat
           - unzip
