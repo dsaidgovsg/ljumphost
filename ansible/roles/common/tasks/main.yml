@@ -36,6 +36,12 @@
 - name: Install nice-to-have dependencies from dnf
   dnf:
     name:
+      - bash-completion
       - vim
     state: latest
   become: yes
+- name: Automatically source bash auto-completion script
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.bashrc"
+    insertafter: EOF
+    line: source /etc/profile.d/bash_completion.sh
