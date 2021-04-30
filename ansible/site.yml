@@ -9,7 +9,7 @@
     nomad_version: 1.0.2
     vault_version: 1.5.4
     packer_version: 1.6.5
-    awscli_version: 1.18.137
+    awscli_version: 1.19.60
     awless_version: 0.1.11
     cfssl_version: 1.4.1
     kubectl_version: 1.19.4
