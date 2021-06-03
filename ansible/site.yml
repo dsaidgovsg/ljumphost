@@ -14,6 +14,8 @@
     cfssl_version: 1.4.1
     kubectl_version: 1.19.4
     helm_version: 1.11
+    prometheus_version: 2.27.1
+    alertmanager_version: 0.22.2
     allow_convenience: true
     allow_emacs: false
   tasks:
@@ -56,6 +58,9 @@
   - name: Install helm
     include_role:
       name: "{{ playbook_dir }}/roles/helm"
+  - name: Install Prometheus and Alertmanager
+    include_role:
+      name: "{{ playbook_dir }}/roles/prometheus"
   - name: Install openvpn
     include_role:
       name: "{{ playbook_dir }}/roles/openvpn"

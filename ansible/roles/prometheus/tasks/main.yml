@@ -1,19 +1,42 @@
 ---
-- name: Download and unarchive Prometheus
-  unarchive:
-    src: https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz
-    dest: /tmp
-    remote_src: yes
-- name: Shift over binaries
-  copy:
-    src: /tmp/prometheus-{{ prometheus_version }}.linux-amd64/{{ item }}
-    dest: /usr/local/bin/
-    mode: 0755
-  become: yes
-  with_items:
-    - prometheus
-    - promtool
-- name: Clean up unarchived temp directory
-  file:
-    path: /tmp/prometheus-{{ prometheus_version }}.linux-amd64
-    state: absent
+- name: Install Prometheus
+  block:
+  - name: Download and unarchive Prometheus
+    unarchive:
+      src: https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz
+      dest: /tmp
+      remote_src: yes
+  - name: Shift over binaries
+    copy:
+      src: /tmp/prometheus-{{ prometheus_version }}.linux-amd64/{{ item }}
+      dest: /usr/local/bin/
+      mode: 0755
+    become: yes
+    with_items:
+      - prometheus
+      - promtool
+  - name: Clean up unarchived temp directory
+    file:
+      path: /tmp/prometheus-{{ prometheus_version }}.linux-amd64
+      state: absent
+
+- name: Install Prometheus Alertmanager
+  block:
+  - name: Download and unarchive Alertmanager
+    unarchive:
+      src: https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-amd64.tar.gz
+      dest: /tmp
+      remote_src: yes
+  - name: Shift over binaries
+    copy:
+      src: /tmp/alertmanager-{{ alertmanager_version }}.linux-amd64/{{ item }}
+      dest: /usr/local/bin/
+      mode: 0755
+    become: yes
+    with_items:
+      - alertmanager
+      - amtool
+  - name: Clean up unarchived temp directory
+    file:
+      path: /tmp/alertmanager-{{ alertmanager_version }}.linux-amd64
+      state: absent
